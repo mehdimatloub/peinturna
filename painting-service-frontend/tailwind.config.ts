@@ -1,18 +1,20 @@
 import type { Config } from "tailwindcss";
 
-export default {
+const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Si tu utilises le dossier "app"
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}", // Si tu utilises le dossier "pages"
+    "./components/**/*.{js,ts,jsx,tsx,mdx}", // Pour les composants
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "var(--background)", // Variables CSS pour la gestion des couleurs
         foreground: "var(--foreground)",
       },
     },
   },
   plugins: [],
-} satisfies Config;
+};
+
+export default config;
