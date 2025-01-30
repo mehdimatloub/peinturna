@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react"; // Ajout de useEffect pour vérifier la connexion
 import SignupPage from "../signup/SignupPage"; // Formulaire d'inscription
-import PaymentSelection from "../components/PaymentSelection"; // Sélection de paiement
-import { useCart } from "../components/CartContext"; // Contexte pour gérer le panier
+import PaymentSelection from "../Components/PaymentSelection"; // Sélection de paiement
+import { useCart } from "../Components/CartContext"; // Contexte pour gérer le panier
 
 const CommandePage: React.FC = () => {
   const { cart, calculateTotal, removeFromCart } = useCart(); // Gestion du panier
