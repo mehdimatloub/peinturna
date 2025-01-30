@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-const PaymentCancel: React.FC = () => {
+const PaymentCancelContent: React.FC = () => {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("token"); // Récupérer le token s'il existe
 
@@ -24,6 +24,14 @@ const PaymentCancel: React.FC = () => {
         </button>
       </div>
     </div>
+  );
+};
+
+const PaymentCancel: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>
+      <PaymentCancelContent />
+    </Suspense>
   );
 };
 
