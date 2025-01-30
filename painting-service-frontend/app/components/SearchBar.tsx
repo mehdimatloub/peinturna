@@ -1,31 +1,32 @@
-import { useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import { useRouter } from "next/navigation"; // Pour rediriger vers la page de recherche
+"use client";
 
-export default function SearchBar({ products = [] }: { products?: any[] }) { 
+import React, { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const router = useRouter(); // Pour rediriger après la recherche
-
-  const handleSearch = () => {
-    if (searchTerm.trim() === "") return; // Empêche la recherche vide
-    router.push(`/search?query=${encodeURIComponent(searchTerm)}`); // Redirection avec le terme recherché
-  };
+const SearchResults: React.FC = () => {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
 
   return (
-    <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-lg w-full max-w-[1100px] my-4 md:my-0">
-
-      <input
-        type="text"
-        placeholder="Rechercher un produit"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="flex-grow border-none text-gray-700 placeholder-gray-400 focus:outline-none"
-        onKeyDown={(e) => e.key === "Enter" && handleSearch()} // Recherche avec "Enter"
-      />
-      <button onClick={handleSearch}>
-        <SearchIcon className="text-gray-500 text-3xl cursor-pointer" />
-      </button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="p-6 bg-white shadow-md rounded-lg max-w-md w-full">
+        <h2 className="text-xl font-semibold text-center">Résultats de recherche</h2>
+        {query ? (
+          <p className="mt-4 text-gray-600">Recherche pour: <strong>{query}</strong></p>
+        ) : (
+          <p className="mt-4 text-red-500">Aucun terme de recherche fourni.</p>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+const SearchPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Chargement des résultats...</div>}>
+      <SearchResults />
+    </Suspense>
+  );
+};
+
+export default SearchPage;
