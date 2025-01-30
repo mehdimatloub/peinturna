@@ -1,22 +1,15 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation"; // Pour lire les paramètres de l'URL
+import React, { useEffect, useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-const PaymentSuccess: React.FC = () => {
+const PaymentSuccessContent: React.FC = () => {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [orderDetails, setOrderDetails] = useState<{
-    orderId: string;
-    amount: string;
-    date: string;
-   
-  } | null>(null);
+  const [orderDetails, setOrderDetails] = useState<{ orderId: string; amount: string; date: string } | null>(null);
 
   useEffect(() => {
-    // Récupération des paramètres de l'URL
-    
     const paymentIntent = searchParams.get("paymentIntent"); // Stripe
     const token = searchParams.get("token"); // PayPal
 
@@ -30,18 +23,15 @@ const PaymentSuccess: React.FC = () => {
     }
   }, [searchParams]);
 
-  // Fonction pour capturer un paiement PayPal
   const capturePayPalPayment = async (orderId: string) => {
     try {
-      const response = await fetch("http://localhost:5000/api/payment/paypal/capture-order", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/paypal/capture-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId }),
       });
-  
+
       const data = await response.json();
-      console.log("PayPal Capture Response:", data);
-  
       if (data.success) {
         setOrderDetails({
           orderId: data.capture.id,
@@ -52,18 +42,15 @@ const PaymentSuccess: React.FC = () => {
         throw new Error(data.message || "Erreur lors de la capture du paiement PayPal.");
       }
     } catch (err) {
-      console.error("Erreur PayPal :", err);
       setError("Impossible de capturer le paiement PayPal.");
     } finally {
       setLoading(false);
     }
   };
-  
 
-  // Fonction pour capturer un paiement Stripe
   const captureStripePayment = async (paymentIntentId: string) => {
     try {
-      const response = await fetch("http://localhost:5000/api/payment/stripe/capture-payment-intent", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/payment/stripe/capture-payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ paymentIntentId }),
@@ -73,15 +60,13 @@ const PaymentSuccess: React.FC = () => {
       if (data.success) {
         setOrderDetails({
           orderId: data.paymentIntent.id,
-          amount: `${(data.paymentIntent.amount / 100).toFixed(2)} €`, // Stripe retourne le montant en centimes
+          amount: `${(data.paymentIntent.amount / 100).toFixed(2)} €`,
           date: new Date().toLocaleString(),
-          
         });
       } else {
         throw new Error("Erreur lors de la capture du paiement Stripe.");
       }
     } catch (error) {
-      console.error("Erreur Stripe :", error);
       setError("Impossible de capturer le paiement Stripe.");
     } finally {
       setLoading(false);
@@ -115,12 +100,11 @@ const PaymentSuccess: React.FC = () => {
               <p className="mt-2 text-gray-600">
                 <strong>Date :</strong> {orderDetails.date}
               </p>
-             
             </div>
           )}
           <button
             className="mt-6 px-6 py-3 bg-green-500 text-white rounded-md"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => typeof window !== "undefined" && (window.location.href = "/")}
           >
             Retour à l'accueil
           </button>
@@ -128,6 +112,14 @@ const PaymentSuccess: React.FC = () => {
       )}
     </div>
   );
-}  
+};
+
+const PaymentSuccess: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
+  );
+};
 
 export default PaymentSuccess;
