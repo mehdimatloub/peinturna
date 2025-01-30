@@ -2,7 +2,7 @@
 
 import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import ProductList from "../components/ProductList"; // Réutilisation du composant
+import ProductList from "../Components/ProductList"; // Réutilisation du composant
 
 const SearchPageContent: React.FC = () => {
   const searchParams = useSearchParams();
