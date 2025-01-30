@@ -1,9 +1,9 @@
 'use client';
 
 import './globals.css';
-import { CartProvider } from './components/CartContext'; // Contexte pour le panier
-import  UserProvider  from './components/UserContext'; // Contexte pour l'utilisateur
-import Cart from './components/Cart'; // Composant du panier
+import { CartProvider } from './Components/CartContext'; // Contexte pour le panier
+import  UserProvider  from './Components/UserContext'; // Contexte pour l'utilisateur
+import Cart from './Components/Cart'; // Composant du panier
 import React from 'react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
