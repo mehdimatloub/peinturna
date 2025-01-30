@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Palette de couleurs personnalisée */
+:root {
+  --background-light: #FFFFFF; /* Arrière-plan principal */
+  --foreground-light: #000000; /* Texte principal */
+  --primary: #FFD700; /* Couleur jaune (liens, titres) */
+  --secondary: #000000; /* Couleur secondaire pour l'en-tête */
+  --hover-color: #FFC300; /* Couleur de survol */
+  --button-bg: #FFD700; /* Fond des boutons */
+  --button-text: #000000; /* Texte des boutons */
+  --error: #FF0000;            /* Couleur d'erreur (optionnel) */
+
+  --line-color: #000000;       /* Couleur des lignes et bordures : Noir */
+
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-light: var(--background-dark);
+    --foreground-light: var(--foreground-dark);
+  }
+}
+
+body {
+  color: var(--foreground-light);
+  background-color: var(--background-light);
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  transition: background-color 0.3s, color 0.3s; /* Ajout de transition */
+}
+
+/* Styles pour l'en-tête et le pied de page */
+.header, .footer {
+  background-color: var(--secondary); /* Bleu marine */
+  color: var(--primary); /* Doré */
+  text-align: center;
+  padding: 15px 0;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Bouton */
+.button {
+  background-color: var(--primary); /* Doré */
+  color: var(--secondary); /* Bleu marine */
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--accent); /* Bleu clair */
+  color: var(--primary); /* Doré */
+  transform: scale(1.05); /* Ajout d'effet au survol */
+}
+
+/* Carte */
+.card {
+  background-color: var(--secondary); /* Bleu marine */
+  color: var(--foreground-light); /* Texte clair */
+  padding: 20px;
+  border: 1px solid var(--primary); /* Doré */
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Champs de saisie */
+input, textarea {
+  background-color: var(--background-light); /* Fond clair */
+  color: var(--foreground-light); /* Texte sombre */
+  border: 1px solid var(--primary); /* Doré */
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent); /* Bleu clair */
+  outline: none;
+  box-shadow: 0 0 5px var(--accent);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Titres */
+h1, h2 {
+  color: var(--primary); /* Doré */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* Messages d'erreur */
+.error-message {
+  background-color: var(--error); /* Rouge pour les erreurs */
+  color: #ffffff; /* Texte blanc */
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Transition globale */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.clients-section img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.clients-section img:hover {
+  transform: scale(1.1);
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.navbar {
+  padding: 1rem 2rem; /* Ajuster pour plus de clarté */
+}
+
+.icon-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.slider-container {
+  position: relative; /* Permet aux flèches d'être positionnées correctement */
+  overflow: hidden; /* Empêche tout débordement */
+  padding: 0 30px; /* Ajoute de l'espace pour les flèches */
+}
+
+
+
+
+.slick-prev,
+.slick-next {
+  display: block !important; /* Force l'affichage des flèches */
+  z-index: 2; /* Met les flèches au-dessus du contenu */
+  background: none; /* Supprime le fond par défaut */
+  border: none;
+}
+
+.slick-prev {
+  left: -30px; /* Ajuste la position gauche */
+}
+
+.slick-next {
+  right: -30px; /* Ajuste la position droite */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: ''; /* Supprime les icônes par défaut */
+}
+
+
+.single-line-title {
+  white-space: nowrap; /* Empêche les sauts à la ligne */
+  overflow: hidden; /* Cache tout le texte qui dépasse */
+  text-overflow: ellipsis; /* Ajoute "..." si le texte est trop long */
+}
+.cart-header {
+  background-color: #000; /* Fond noir */
+  color: #fff; /* Texte blanc */
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.payment-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.stripe-card-element {
+  border: 1px solid #ccc; /* Bordure des champs */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9; /* Fond gris clair */
+}
+
+.error-message {
+  background-color: #ffe4e4;
+  color: #e5424d;
+  font-size: 0.9rem;
+  padding: 10px;
+  border: 1px solid #e5424d;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #FFC300;
+  color: #fff;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #00796b; /* Jaune plus foncé au survol */
+}
+
+.submit-button.loading {
+  background-color: #ccc; /* Couleur grise lorsqu'il est désactivé */
+  cursor: not-allowed;
+}
+
+.form-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.stripe-card-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px;
+  background-color: #fff;
+  margin-bottom: 15px;
+}
