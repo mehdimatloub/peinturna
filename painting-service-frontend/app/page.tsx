@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ServiceCard from './components/ServiceCard';
-import BannerSwiper from './components/BannerSwiper';
-import ProductList from './components/ProductList';
-import SidebarMenu from './components/SidebarMenu';
-import Cart from './components/Cart'; // Import du composant Cart
+import ServiceCard from './Components/ServiceCard';
+import BannerSwiper from './Components/BannerSwiper';
+import ProductList from './Components/ProductList';
+import SidebarMenu from './Components/SidebarMenu';
+import Cart from './Components/Cart'; // Import du composant Cart
 import Link from 'next/link';
-import { useCart } from './components/CartContext'; // Import du contexte du panier
+import { useCart } from './Components/CartContext'; // Import du contexte du panier
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FormatPaintIcon from '@mui/icons-material/FormatPaint';
@@ -15,7 +15,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import SearchBar from './components/SearchBar'
+import SearchBar from './Components/SearchBar'
 export default function HomePage() {
   const [services, setServices] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
