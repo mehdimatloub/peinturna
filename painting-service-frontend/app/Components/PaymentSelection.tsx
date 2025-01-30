@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { useUser } from "../components/UserContext"; 
-import { useCart } from "../components/CartContext"; 
-import StripePayment from "../components/StripePayment";
+import { useUser } from "../Components/UserContext"; 
+import { useCart } from "../Components/CartContext"; 
+import StripePayment from "../Components/StripePayment";
 
 const PaymentSelection: React.FC = () => {
   const { user } = useUser(); 
