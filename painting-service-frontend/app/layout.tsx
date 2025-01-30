@@ -10,6 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body>
+          <body className="bg-white text-black"> {/* Ajoute `className` ici */}
         <UserProvider>
           <CartProvider>
             {/* Composant pour afficher le panier */}
