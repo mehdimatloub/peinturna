@@ -1,22 +1,25 @@
-'use client';
+"use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function ResetPasswordPage() {
+const ResetPasswordContent: React.FC = () => {
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const token = new URLSearchParams(window.location.search).get('token');
+  const searchParams = useSearchParams(); // ✅ Remplace l'utilisation de `window`
+  const token = searchParams.get("token");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true); // ✅ Empêche plusieurs requêtes simultanées
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/reset-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/reset-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, newPassword }),
       });
 
@@ -31,6 +34,8 @@ export default function ResetPasswordPage() {
       }
     } catch (error) {
       setError("Erreur de connexion au serveur.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,8 +52,12 @@ export default function ResetPasswordPage() {
             onChange={(e) => setNewPassword(e.target.value)}
             required
           />
-          <button type="submit" className="w-full mt-4 bg-blue-500 text-white py-2 rounded">
-            Changer le mot de passe
+          <button 
+            type="submit" 
+            className="w-full mt-4 bg-blue-500 text-white py-2 rounded disabled:opacity-50"
+            disabled={loading} // ✅ Désactive le bouton si en cours de chargement
+          >
+            {loading ? "Chargement..." : "Changer le mot de passe"}
           </button>
         </form>
         {message && <p className="text-green-500 mt-3">{message}</p>}
@@ -56,4 +65,14 @@ export default function ResetPasswordPage() {
       </div>
     </div>
   );
-}
+};
+
+const ResetPasswordPage: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>
+      <ResetPasswordContent />
+    </Suspense>
+  );
+};
+
+export default ResetPasswordPage;
