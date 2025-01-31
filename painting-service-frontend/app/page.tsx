@@ -109,9 +109,9 @@ export default function HomePage() {
           </div>
 
           {/* Barre de recherche */}
-          <div className="flex flex-1 justify-center px-4">
+<div className="flex flex-1 justify-center px-4">
   <div className="w-full max-w-[1100px]">
-    <SearchBar />
+    <SearchBar /> {/* Utilisation de la barre de recherche corrigée */}
   </div>
 </div>
 
