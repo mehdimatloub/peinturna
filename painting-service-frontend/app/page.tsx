@@ -56,7 +56,7 @@ export default function HomePage() {
       if (currentScrollY > lastScrollPosition && currentScrollY > 100) {
         setShowNavbar(false);
       } else {
-        //setShowNavbar(true);
+        setShowNavbar(true);
       }
   
       setLastScrollPosition(currentScrollY);
