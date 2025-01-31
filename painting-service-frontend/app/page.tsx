@@ -199,7 +199,7 @@ export default function HomePage() {
                 Livraison & Moyens de paiement
               </h3>
               <div className="flex justify-center space-x-4">
-                <Image src="/visa.png" alt="Visa" className="h-20" />
+                <Image src="/Visa.png" alt="Visa" className="h-20" />
                 <Image src="/PayPal.png" alt="PayPal" className="h-20" />
                 <Image src="/mastercarte.png" alt="MasterCard" className="h-20" />
               </div>
