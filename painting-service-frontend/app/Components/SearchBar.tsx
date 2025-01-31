@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import SearchIcon from "@mui/icons-material/Search"; // Icône MUI
 
 export default function SearchBar() {
   const [query, setQuery] = useState(""); // État par défaut vide
@@ -16,15 +17,21 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={handleSearch} className="flex items-center bg-white rounded-full shadow-md w-full">
+      {/* Champ de recherche */}
       <input
         type="text"
-        placeholder="Rechercher..."
+        placeholder="Rechercher un produit"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full p-2 rounded-l-full outline-none"
+        className="w-full p-2 rounded-full outline-none pl-4"
       />
-      <button type="submit" className="bg-yellow-500 px-4 py-2 rounded-r-full text-white">
-        🔍
+      
+      {/* Bouton avec une icône sans fond jaune */}
+      <button 
+        type="submit" 
+        className="px-3 py-2 text-gray-500 flex items-center justify-center"
+      >
+        <SearchIcon className="text-gray-500" />
       </button>
     </form>
   );
