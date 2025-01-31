@@ -10,6 +10,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  assetPrefix: process.env.NODE_ENV === "production" ? "/peinture" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/peinture" : "",
 };
 
 module.exports = nextConfig;
