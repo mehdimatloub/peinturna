@@ -48,23 +48,23 @@ export default function HomePage() {
   
    
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  //useEffect(() => {
+   // const handleScroll = () => {
+     // const currentScrollY = window.scrollY;
   
       // Cache la navbar si on descend, l'affiche si on remonte ou si on est en haut
-      if (currentScrollY > lastScrollPosition && currentScrollY > 100) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
+      //if (currentScrollY > lastScrollPosition && currentScrollY > 100) {
+        //setShowNavbar(false);
+      //} else {
+        //setShowNavbar(true);
+      //}
   
-      setLastScrollPosition(currentScrollY);
-    };
+      //setLastScrollPosition(currentScrollY);
+   // };
   
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollPosition]);
+    //window.addEventListener('scroll', handleScroll);
+    //return () => window.removeEventListener('scroll', handleScroll);
+  //}, [lastScrollPosition]);
   
   useEffect(() => {
     const fetchServices = async () => {
