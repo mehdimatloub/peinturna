@@ -1,17 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true, // Pour GitHub Pages et Vercel statique
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  assetPrefix: process.env.NODE_ENV === "production" ? "/peinturna" : "",
-  basePath: process.env.NODE_ENV === "production" ? "/peinturna" : "",
+  plugins: [],
 };
-
-module.exports = nextConfig;
