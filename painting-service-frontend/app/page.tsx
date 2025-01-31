@@ -16,6 +16,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import SearchBar from './Components/SearchBar'
+import Image from "next/image";
+
 export default function HomePage() {
   const [services, setServices] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
@@ -99,7 +101,7 @@ export default function HomePage() {
 
           {/* Logo */}
           <div className="flex items-center space-x-4 flex-shrink-0">
-            <img
+            <Image
               src="/logo.jpg"
               alt="Logo Peinturna"
               className="h-15 w-20 object-contain rounded-full  shadow-md "
@@ -165,7 +167,7 @@ export default function HomePage() {
         <h2 className="text-5xl font-bold mb-8 text-center  text-gray-800 mb-10">Nos Clients</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
           {Array.from({ length: 9 }, (_, i) => (
-            <img
+            <Image
               key={i}
               src={`/client${i + 1}.png`}
               alt={`Client ${i + 1}`}
@@ -180,7 +182,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-between items-start mb-8">
             {/* Colonne 1 */}
             <div className="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
-              <img
+              <Image
                 src="/logo-peinturna.png"
                 alt="Logo Peinturna"
                 className="mx-auto md:mx-0 h-20"
@@ -197,9 +199,9 @@ export default function HomePage() {
                 Livraison & Moyens de paiement
               </h3>
               <div className="flex justify-center space-x-4">
-                <img src="/visa.png" alt="Visa" className="h-20" />
-                <img src="/PayPal.png" alt="PayPal" className="h-20" />
-                <img src="/mastercarte.png" alt="MasterCard" className="h-20" />
+                <Image src="/visa.png" alt="Visa" className="h-20" />
+                <Image src="/PayPal.png" alt="PayPal" className="h-20" />
+                <Image src="/mastercarte.png" alt="MasterCard" className="h-20" />
               </div>
             </div>
 
