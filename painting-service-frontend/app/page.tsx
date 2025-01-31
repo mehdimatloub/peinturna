@@ -156,7 +156,7 @@ export default function HomePage() {
 
         {/* Nos Produits */}
         <h2 className="text-5xl font-bold mb-8 text-center  text-gray-800 mb-10">Nos Produits</h2>
-        {/* <ProductList />*/}
+         <ProductList />
       </main>
 
       {/* Panneau latéral du panier */}
