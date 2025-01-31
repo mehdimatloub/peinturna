@@ -16,17 +16,17 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex items-center bg-white rounded-full shadow-md w-full">
+    <form onSubmit={handleSearch} className="flex items-center bg-white rounded-full shadow-md w-full border border-transparent focus-within:border-gray-300">
       {/* Champ de recherche */}
       <input
         type="text"
         placeholder="Rechercher un produit"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full p-2 rounded-full outline-none pl-4"
+        className="w-full p-2 rounded-full outline-none pl-4 focus:ring-0 focus:border-none border-none"
       />
       
-      {/* Bouton avec une icône sans fond jaune */}
+      {/* Bouton avec icône sans fond jaune */}
       <button 
         type="submit" 
         className="px-3 py-2 text-gray-500 flex items-center justify-center"
